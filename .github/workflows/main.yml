@@ -9,3 +9,7 @@ jobs:
   runs-on: ubunutu-latest
   steps:
   - run: echo "Job1"
+ job2:
+  runs-on: windows-latest
+  steps:
+  - run: echo "Job2"
