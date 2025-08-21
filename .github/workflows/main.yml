@@ -1,0 +1,11 @@
+name: First Workflow
+
+on: 
+##[push,pull_request,issues, workflow_dispatch,pull_request_review, fork]
+ workflow_dispatch
+
+jobs:
+ job1:
+  runs-on: ubunutu-latest
+  steps:
+  - run: echo "Job1"
