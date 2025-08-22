@@ -1,13 +1,21 @@
 name: Context
 
 on: workflow_dispatch
-
+env:
+ GITHUB_TOKEN: "workflow"
+ MY_VAR: ${{vars.MY_VAR}}
 jobs:
  print-context:
   runs-on: ubuntu-latest
+  env:
+   GITHUB_TOKEN: "job"
   steps:
+     
    - name: Print
+     env:
+      GITHUB_TOKEN: "step"
      run: |
+      echo "${{env.MY_VAR}}
       echo "Actor is ${{github.actor}}"
       echo "Event name is ${{github.event_name}}"
       echo "Ref is ${{github.ref}}"
