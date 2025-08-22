@@ -3,19 +3,19 @@ name: Context
 on: workflow_dispatch
 
 jobs:
- matrixjobs:
-  runs-on: ${{matrix.os}}
-  strategy:
-   fail-fast: false
-   matrix:
-    os: [ ubuntu-latest , windows-latest]
-    java-version: [17,21,26]
+ build:
+  runs-on: ubuntu-latest
   steps:
-  - name: Setup Java 
-    uses: actions/setup-java@v5.0.0
-    with:
-     java-version: ${{matrix.java-version}}
-     distribution: microsoft
-    
-     
-     
+   - run: exit 1
+ test:
+  needs: build
+  runs-on: ubuntu-latest
+  steps:
+   - run: echo"test"
+ deploy:
+  needs: [ build , test] 
+  runs-on: ubuntu-latest
+  steps:
+   - run: echo"deploy"
+  
+  
